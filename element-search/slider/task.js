@@ -1,46 +1,7 @@
-//0
-/*const sliderItems =  Array.from(document.querySelectorAll(".slider__item"));
-const prevButton = document.querySelector(".slider__arrow_prev");
-const nextButton = document.querySelector(".slider__arrow_next");
-let currentIndex = 0;
-
-prevButton.addEventListener("click", goToPrevSlide);
-nextButton.addEventListener("click", goToNextSlide);
-
-function updateActiveSlide() {
-    sliderItems.forEach(function(item) {
-    item.classList.remove("slider__item_active");
-  });
-  
-  sliderItems[currentIndex].classList.add("slider__item_active");
-}
-
-function goToPrevSlide() {
-    currentIndex--;
-
-    if (currentIndex < 0) {
-      currentIndex = sliderItems.length - 1;
-    }
-
-    updateActiveSlide();
-}
-
-function goToNextSlide() {
-  currentIndex++;
-
-  if (currentIndex >= sliderItems.length) {
-    currentIndex = 0;
-  }
-
-  updateActiveSlide();
-}*/
-
-//1
 const sliderItems = document.querySelectorAll(".slider__item");
 const sliderDots = document.querySelectorAll(".slider__dot");
 const prevButton = document.querySelector(".slider__arrow_prev");
 const nextButton = document.querySelector(".slider__arrow_next");
-let currentIndex = 0;
 
 prevButton.addEventListener("click", goToPrevSlide);
 nextButton.addEventListener("click", goToNextSlide);
@@ -53,7 +14,7 @@ sliderDots.forEach(function(dot, index) {
 
 sliderDots[0].classList.add("slider__dot_active");
 
-function updateActiveSlide() {
+function updateActiveSlide(index) {
   sliderItems.forEach(function(item) {
     item.classList.remove("slider__item_active");
   });
@@ -62,32 +23,36 @@ function updateActiveSlide() {
     dot.classList.remove("slider__dot_active");
   });
 
-  sliderItems[currentIndex].classList.add("slider__item_active");
-  sliderDots[currentIndex].classList.add("slider__dot_active");
+  sliderItems[index].classList.add("slider__item_active");
+  sliderDots[index].classList.add("slider__dot_active");
 }
 
 function goToPrevSlide() {
-  currentIndex--;
+  const activeSlideIndex = Array.from(sliderItems).findIndex(function(item) {
+    return item.classList.contains("slider__item_active");
+  });
 
-  if (currentIndex < 0) {
-    currentIndex = sliderItems.length - 1;
+  let newIndex = activeSlideIndex - 1;
+  if (newIndex < 0) {
+    newIndex = sliderItems.length - 1;
   }
 
-  updateActiveSlide();
+  updateActiveSlide(newIndex);
 }
 
 function goToNextSlide() {
-  currentIndex++;
+  const activeSlideIndex = Array.from(sliderItems).findIndex(function(item) {
+    return item.classList.contains("slider__item_active");
+  });
 
-  if (currentIndex >= sliderItems.length) {
-    currentIndex = 0;
+  let newIndex = activeSlideIndex + 1;
+  if (newIndex >= sliderItems.length) {
+    newIndex = 0;
   }
 
-  updateActiveSlide();
+  updateActiveSlide(newIndex);
 }
 
 function goToSlide(index) {
-  currentIndex = index;
-  
-  updateActiveSlide();
+  updateActiveSlide(index);
 }
