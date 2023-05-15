@@ -6,7 +6,6 @@ class Game {
     this.lossElement = container.querySelector('.status__loss');
 
     this.reset();
-
     this.registerEvents();
   }
 
@@ -17,14 +16,18 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-      DOM-элемент текущего символа находится в свойстве this.currentSymbol.
-     */
+    const self = this;
+  
+    document.addEventListener('keyup', function(event) {
+      const enterSymbol = event.key.toLowerCase();
+      const currentSymbol = self.currentSymbol.textContent;
+
+      if (enterSymbol === currentSymbol) {
+        self.success()
+      } else {
+        self.fail();
+      }
+    });
   }
 
   success() {
@@ -91,4 +94,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
