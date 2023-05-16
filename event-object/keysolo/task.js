@@ -16,16 +16,14 @@ class Game {
   }
 
   registerEvents() {
-    const self = this;
-  
-    document.addEventListener('keyup', function(event) {
+    document.addEventListener('keyup', (event) => {
       const enterSymbol = event.key.toLowerCase();
-      const currentSymbol = self.currentSymbol.textContent;
+      const currentSymbol = this.currentSymbol.textContent;
 
       if (enterSymbol === currentSymbol) {
-        self.success()
+        this.success()
       } else {
-        self.fail();
+        this.fail();
       }
     });
   }
