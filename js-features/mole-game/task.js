@@ -13,8 +13,8 @@ for (let i = 1; i <= 9; i++) {
         if (hole.classList.contains('hole_has-mole')) {
             clickCount++;
             dead.innerHTML = clickCount;
-            if (lastClickedPosition === i) { // если кликнули на ту же ячейку, где уже был крот
-                clickCount++; // увеличиваем счетчик еще на 1
+            if (lastClickedPosition === i) {
+                clickCount++; 
                 dead.innerHTML = clickCount;
             }
             lastClickedPosition = i;

@@ -28,3 +28,8 @@
   background-size: contain;
   background-color: brown;
 }
+
+.mole_hit {
+  transform: scale(1.5);
+  transition: transform 0.5s ease;
+}
