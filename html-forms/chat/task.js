@@ -52,7 +52,7 @@ chatWidget.addEventListener("click", () => {
 });
 
 chatWidget.addEventListener("keydown", event => {
-    if (event.code !== "Enter" || inputField.value.length === 0) {
+    if (event.key !== "Enter" || inputField.value.trim() === "") {
         return;
     };
 
