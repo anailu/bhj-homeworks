@@ -7,13 +7,13 @@ function addTask(title) {
     task.classList.add("task");
 
     const taskTitle = document.createElement("div");
-    taskTitle.classList.add("task-title");
+    taskTitle.classList.add("task__title");
     taskTitle.textContent = title;
     task.appendChild(taskTitle);
     
     const removeBtn = document.createElement("a");
     removeBtn.href = "#";
-    removeBtn.classList.add("task_remove");
+    removeBtn.classList.add("task__remove");
     removeBtn.innerHTML = "&times;";
     removeBtn.addEventListener("click", () => {
         task.remove();
