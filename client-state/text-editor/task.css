@@ -8,3 +8,10 @@ textarea {
   border: 1px solid #e2e2e2;
   box-sizing: border-box;
 }
+
+.clear-btn {
+  background-color: rgb(57, 247, 183);
+  color: black;
+  font-weight: 500;
+  border-radius: 10% 30%;
+}
