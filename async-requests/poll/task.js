@@ -1,14 +1,13 @@
 function getData(callback) {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "https://students.netoservices.ru/nestjs-backend/poll");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                const data = JSON.parse(xhr.responseText);
-                callback(data);
-            } else {
-                console.error("Ошибка при получении данных опроса:", xhr.status);
-            }
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const data = xhr.response;
+            callback(data);
+        } else {
+            console.error("Ошибка при получении данных опроса:", xhr.status);
         }
     };
     xhr.send();
@@ -40,5 +39,3 @@ window.addEventListener("DOMContentLoaded", () => {
         showQstn(pollData.data);
     });
 });
-
-
