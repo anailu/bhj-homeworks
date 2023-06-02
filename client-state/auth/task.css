@@ -45,3 +45,14 @@
   display: block;
   text-align: center;
 }
+
+.logout_btn {
+  display: block;
+  margin: 20px auto;
+  background-color: #06f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
